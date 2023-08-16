@@ -16,10 +16,11 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState(null);
   const [buttonstat, setButtonstat] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   // Login handler
   const handleLogin = () => {
-    if (username === 'anush' && password === 'anush') {
+    if (username === 'Sincere@april.biz' && password === 'Shanna@melissa.tv') {
       setButtonstat(true);
       setMessage(<div className="login-message">Logged in successfully!</div>);
       setTimeout(() => {
@@ -48,6 +49,14 @@ const LoginPage = () => {
             height="50px"
             width="47px"
           />
+          <div>
+            <p>
+              <strong>username:</strong> Sincere@april.biz
+            </p>
+            <p>
+              <strong>password:</strong> Shanna@melissa.tv
+            </p>
+          </div>
           <h2>Login</h2>
         </div>
         <input
@@ -57,11 +66,17 @@ const LoginPage = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <button
+          className="toggle-password"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? 'Hide password' : 'show password'}
+        </button>
         <button onClick={handleLogin}>
           {buttonstat ? 'Logging in...' : 'Login'}
         </button>
