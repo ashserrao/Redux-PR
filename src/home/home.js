@@ -2,6 +2,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { isLoggedIn, isLoggingOut } from '../Actions/index';
 import './home.css';
 
 const HomePage = () => {
@@ -10,11 +11,9 @@ const HomePage = () => {
 
   const handleLogout = () => {
     setTimeout(() => {
-      setButtonstat(false);
-      setMessage();
-      dispatch(isLoggedOut());
+      dispatch(isLoggingOut());
       // store.subscribe(() => console.log(store.getState()));
-      navigate('/home');
+      navigate('/');
     }, 2000);
   };
   return (
@@ -32,10 +31,10 @@ const HomePage = () => {
             <a href="/services">Services</a>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <a href="/contact">Profile</a>
           </li>
           <li>
-            <button className="logout">
+            <button className="logout" onClick={handleLogout}>
               <img
                 src="https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/logout-512.png"
                 height="25px"
